@@ -1,0 +1,26 @@
+@for (player of game.players; track $index) {
+<app-player [ngStyle]="{'top.px': 100 +($index* 80)}" class="player-position" [name]="player"
+  [playerActive]=" $index == game.currentPlayer"></app-player>
+}
+<div class="field">
+  <div class="card-stack">
+    <!-- Card Stack -->
+    @for (cover of [1,2,3,4]; track $index) {
+    <img [ngStyle]="{'right.px': $index *5}" src="/assets/img/cards/card_cover.png">
+    }
+    <img (click)="takeCard()" class="top-card" style="right: 25px;" src="/assets/img/cards/card_cover.png">
+    <!-- Stack for played card -->
+    @for (card of game.playedCards; track $index) {
+    <img src="/assets/img/cards/{{ card }}.png" class="played-card">
+    }
+    <!-- Current Card and Animation -->
+    <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card" style="right: 25px;"
+      src="/assets/img/cards/{{ game.currentCard }}.png">
+  </div>
+</div>
+
+<button mat-fab color="primary" (click)="openDialog()" class="btn-add">
+  <mat-icon>add</mat-icon>
+</button>
+
+<app-game-info [card]="game.currentCard" class="pin-bottom"></app-game-info>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ringoffire-f69eb": {
+      "hosting": {
+        "ringoffire": [
+          "ringoffire-f69eb"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ringoffire-f69eb"
+  }
+}
